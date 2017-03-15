@@ -14,7 +14,7 @@
 #include <wx/image.h>
 //*)
 
-IMPLEMENT_APP(MrHashApp);
+IMPLEMENT_APP_CONSOLE(MrHashApp);
 
 bool MrHashApp::OnInit()
 {
