@@ -33,6 +33,7 @@ class MrHashFrame: public wxFrame
         void OnQuit(wxCommandEvent& event);
         void OnAbout(wxCommandEvent& event);
         void OnFile(wxCommandEvent& event);
+		void OnHashString(wxCommandEvent& event);
         void OnListBox1Select(wxCommandEvent& event);
         void OnListView1BeginDrag(wxListEvent& event);
         void OnListView1RightDown(wxListEvent& event);

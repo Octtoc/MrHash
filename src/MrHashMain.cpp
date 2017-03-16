@@ -64,7 +64,7 @@ MrHashFrame::MrHashFrame(wxWindow* parent,wxWindowID id)
 {
     wxMenuBar *menuBar1;
 	wxMenu *menuFile, *menuTools, *menuHelp;
-	wxMenuItem *itemOpenFile, *itemQuit, *itemAbout;
+	wxMenuItem *itemOpenFile, *itemQuit, *itemAbout, *itemStringHash;
 
     Create(parent, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE, _T("wxID_ANY"));
     SetClientSize(wxSize(463,230));
@@ -81,6 +81,9 @@ MrHashFrame::MrHashFrame(wxWindow* parent,wxWindowID id)
 
 	itemQuit = new wxMenuItem(menuFile, wxID_ANY, _("&Quit"), wxEmptyString, wxITEM_NORMAL);
 	menuFile->Append(itemQuit);
+
+	itemStringHash = new wxMenuItem(menuTools, wxID_ANY, _("&Hash from String"), wxEmptyString, wxITEM_NORMAL);
+	menuTools->Append(itemStringHash);
 
 	itemAbout = new wxMenuItem(menuHelp, wxID_ANY, _("&About"), wxEmptyString, wxITEM_NORMAL);
 	menuHelp->Append(itemAbout);
@@ -101,6 +104,7 @@ MrHashFrame::MrHashFrame(wxWindow* parent,wxWindowID id)
     Connect(itemOpenFile->GetId(),wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&MrHashFrame::OnFile);
     Connect(itemQuit->GetId(),wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&MrHashFrame::OnQuit);
     Connect(itemAbout->GetId(),wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&MrHashFrame::OnAbout);
+	Connect(itemStringHash->GetId(), wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&MrHashFrame::OnHashString);
 
     ListView1->AppendColumn("Dateiname");
     ListView1->AppendColumn("CRC32");
@@ -186,6 +190,12 @@ void MrHashFrame::OnAbout(wxCommandEvent& event)
 {
     wxString msg = wxbuildinfo(long_f);
     wxMessageBox(msg, _("Welcome to..."));
+}
+
+void MrHashFrame::OnHashString(wxCommandEvent& event)
+{
+	wxString msg(_("Hello"));
+	wxMessageBox(msg, _(""));
 }
 
 void MrHashFrame::OnFile(wxCommandEvent& event)
