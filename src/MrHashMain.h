@@ -10,12 +10,10 @@
 #ifndef MRHASHMAIN_H
 #define MRHASHMAIN_H
 
-//(*Headers(MrHashFrame)
 #include <wx/listctrl.h>
 #include <wx/menu.h>
 #include <wx/frame.h>
 #include <wx/statusbr.h>
-//*)
 
 enum CalcHash {
     HL_CRC32, HL_Keccak, HL_MD5, HL_SHA1, HL_SHA256, HL_SHA3 };
@@ -32,7 +30,6 @@ class MrHashFrame: public wxFrame
 
         void OnPopupClick(wxCommandEvent &event);
 
-        //(*Handlers(MrHashFrame)
         void OnQuit(wxCommandEvent& event);
         void OnAbout(wxCommandEvent& event);
         void OnFile(wxCommandEvent& event);
@@ -41,21 +38,10 @@ class MrHashFrame: public wxFrame
         void OnListView1RightDown(wxListEvent& event);
         void OnListView1ColumnRClick(wxListEvent& event);
         void OnListView1ItemRClick(wxListEvent& event);
-        //*)
 
-        //(*Identifiers(MrHashFrame)
-        static const long ID_LISTVIEW1;
-        static const long ID_MENUITEM1;
-        static const long idMenuQuit;
-        static const long idMenuAbout;
-        static const long ID_STATUSBAR1;
-        //*)
-
-        //(*Declarations(MrHashFrame)
         wxMenuItem* MenuItem3;
         wxStatusBar* StatusBar1;
         wxListView* ListView1;
-        //*)
 
         DECLARE_EVENT_TABLE()
 };

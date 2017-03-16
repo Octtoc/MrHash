@@ -57,55 +57,50 @@ wxString wxbuildinfo(wxbuildinfoformat format)
     return wxbuild;
 }
 
-//(*IdInit(MrHashFrame)
-const long MrHashFrame::ID_LISTVIEW1 = wxNewId();
-const long MrHashFrame::ID_MENUITEM1 = wxNewId();
-const long MrHashFrame::idMenuQuit = wxNewId();
-const long MrHashFrame::idMenuAbout = wxNewId();
-const long MrHashFrame::ID_STATUSBAR1 = wxNewId();
-//*)
-
 BEGIN_EVENT_TABLE(MrHashFrame,wxFrame)
-    //(*EventTable(MrHashFrame)
-    //*)
 END_EVENT_TABLE()
 
 MrHashFrame::MrHashFrame(wxWindow* parent,wxWindowID id)
 {
-    //(*Initialize(MrHashFrame)
-    wxMenuItem* MenuItem2;
-    wxMenuItem* MenuItem1;
-    wxMenu* Menu1;
-    wxMenuBar* MenuBar1;
-    wxMenu* Menu2;
+    wxMenuBar *menuBar1;
+	wxMenu *menuFile, *menuTools, *menuHelp;
+	wxMenuItem *itemOpenFile, *itemQuit, *itemAbout;
 
     Create(parent, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE, _T("wxID_ANY"));
     SetClientSize(wxSize(463,230));
-    ListView1 = new wxListView(this, ID_LISTVIEW1, wxPoint(208,368), wxSize(312,120), wxLC_REPORT, wxDefaultValidator, _T("ID_LISTVIEW1"));
-    MenuBar1 = new wxMenuBar();
-    Menu1 = new wxMenu();
-    MenuItem3 = new wxMenuItem(Menu1, ID_MENUITEM1, _("Open File"), wxEmptyString, wxITEM_NORMAL);
-    Menu1->Append(MenuItem3);
-    MenuItem1 = new wxMenuItem(Menu1, idMenuQuit, _("Quit\tAlt-F4"), _("Quit the application"), wxITEM_NORMAL);
-    Menu1->Append(MenuItem1);
-    MenuBar1->Append(Menu1, _("&File"));
-    Menu2 = new wxMenu();
-    MenuItem2 = new wxMenuItem(Menu2, idMenuAbout, _("About\tF1"), _("Show info about this application"), wxITEM_NORMAL);
-    Menu2->Append(MenuItem2);
-    MenuBar1->Append(Menu2, _("Help"));
-    SetMenuBar(MenuBar1);
-    StatusBar1 = new wxStatusBar(this, ID_STATUSBAR1, 0, _T("ID_STATUSBAR1"));
+    ListView1 = new wxListView(this, wxID_ANY, wxPoint(208,368), wxSize(312,120), wxLC_REPORT, wxDefaultValidator, _T("ID_LISTVIEW1"));
+    
+	menuBar1 = new wxMenuBar();
+	
+	menuFile = new wxMenu();
+	menuTools = new wxMenu();
+	menuHelp = new wxMenu();
+
+	itemOpenFile = new wxMenuItem(menuFile, wxID_ANY, _("&Open File"), wxEmptyString, wxITEM_NORMAL);
+	menuFile->Append(itemOpenFile);
+
+	itemQuit = new wxMenuItem(menuFile, wxID_ANY, _("&Quit"), wxEmptyString, wxITEM_NORMAL);
+	menuFile->Append(itemQuit);
+
+	itemAbout = new wxMenuItem(menuHelp, wxID_ANY, _("&About"), wxEmptyString, wxITEM_NORMAL);
+	menuHelp->Append(itemAbout);
+
+	menuBar1->Append(menuFile, _("&File"));
+	menuBar1->Append(menuTools, _("&Tools"));
+	menuBar1->Append(menuHelp, _("&Help"));
+
+	SetMenuBar(menuBar1);
+    StatusBar1 = new wxStatusBar(this, wxID_ANY, 0, _T("ID_STATUSBAR1"));
     int __wxStatusBarWidths_1[1] = { -1 };
     int __wxStatusBarStyles_1[1] = { wxSB_NORMAL };
     StatusBar1->SetFieldsCount(1,__wxStatusBarWidths_1);
     StatusBar1->SetStatusStyles(1,__wxStatusBarStyles_1);
     SetStatusBar(StatusBar1);
 
-    Connect(ID_LISTVIEW1,wxEVT_COMMAND_LIST_ITEM_RIGHT_CLICK,(wxObjectEventFunction)&MrHashFrame::OnListView1ItemRClick);
-    Connect(ID_MENUITEM1,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&MrHashFrame::OnFile);
-    Connect(idMenuQuit,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&MrHashFrame::OnQuit);
-    Connect(idMenuAbout,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&MrHashFrame::OnAbout);
-    //*)
+    Connect(ListView1->GetId(),wxEVT_COMMAND_LIST_ITEM_RIGHT_CLICK,(wxObjectEventFunction)&MrHashFrame::OnListView1ItemRClick);
+    Connect(itemOpenFile->GetId(),wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&MrHashFrame::OnFile);
+    Connect(itemQuit->GetId(),wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&MrHashFrame::OnQuit);
+    Connect(itemAbout->GetId(),wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&MrHashFrame::OnAbout);
 
     ListView1->AppendColumn("Dateiname");
     ListView1->AppendColumn("CRC32");
@@ -117,11 +112,7 @@ MrHashFrame::MrHashFrame(wxWindow* parent,wxWindowID id)
     ListView1->AppendColumn("Pfad");
 }
 
-MrHashFrame::~MrHashFrame()
-{
-    //(*Destroy(MrHashFrame)
-    //*)
-}
+MrHashFrame::~MrHashFrame(){ }
 
 wxString MrHashFrame::CalculateHash(wxString filepath, CalcHash hashvalues)
 {
@@ -238,7 +229,6 @@ void MrHashFrame::OnFile(wxCommandEvent& event)
 void MrHashFrame::OnPopupClick(wxCommandEvent &event)
 {
     wxString clipHashText;
-    //void *data=static_cast<wxMenu *>(event.GetEventObject())->GetClientData();
  	switch(event.GetId()) {
  		case 1:
  		    clipHashText = ListView1->GetItemText(0,1);
