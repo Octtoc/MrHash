@@ -153,7 +153,7 @@ wxString MrHashFrame::CalculateHash(wxString filepath, CalcHash hashvalues)
     const size_t BufferSize = 144*7*1024;
     char* buffer = new char[BufferSize];
     // select input source: either file or standard-in
-    std::ifstream file(filepath.wchar_str(), std::ifstream::in | std::ifstream::binary);
+    std::ifstream file(filepath.c_str(), std::ifstream::in | std::ifstream::binary);
     std::istream* input = NULL;
 
     if (!file)
