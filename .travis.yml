@@ -1,3 +1,7 @@
 language: cpp
 compiler:
   - gcc
+install:
+  - sudo apt-get install libwxgtk3.0-dev libwxgtk3.0-0v5-dbg -y
+script:
+  - cmake CMakeLists.txt && make
