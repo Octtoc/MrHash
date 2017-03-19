@@ -168,15 +168,7 @@ wxString MrHashFrame::CalculateHash(wxString filepath, CalcHash hashvalues)
 
     hashvalue << algorithm->getHash();
 
-    // clean up
     file.close();
-//    delete[] buffer;
-//    if (input != NULL)
-//        delete input;
-
-    //if (algorithm != NULL)
-    //    delete algorithm;
-    //delete algorithm;
 
     return hashvalue;
 }
