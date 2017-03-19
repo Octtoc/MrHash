@@ -1,12 +1,3 @@
-/***************************************************************
- * Name:      MrHashMain.cpp
- * Purpose:   Code for Application Frame
- * Author:     ()
- * Created:   2015-12-18
- * Copyright:  ()
- * License:
- **************************************************************/
-
 #include "MrHashMain.h"
 
 #include <fstream>

@@ -1,12 +1,3 @@
-/***************************************************************
- * Name:      MrHashMain.h
- * Purpose:   Defines Application Frame
- * Author:     ()
- * Created:   2015-12-18
- * Copyright:  ()
- * License:
- **************************************************************/
-
 #ifndef MRHASHMAIN_H
 #define MRHASHMAIN_H
 

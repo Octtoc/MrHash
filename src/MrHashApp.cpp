@@ -1,12 +1,3 @@
-/***************************************************************
- * Name:      MrHashApp.cpp
- * Purpose:   Code for Application Class
- * Author:     ()
- * Created:   2015-12-18
- * Copyright:  ()
- * License:
- **************************************************************/
-
 #include "MrHashApp.h"
 
 //(*AppHeaders
