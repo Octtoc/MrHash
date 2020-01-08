@@ -1,2 +1,2 @@
 # MrHash
-[![Build Status](https://travis-ci.org/Octtoc/MrHash.svg?branch=master)
+![Build Status](https://travis-ci.org/Octtoc/MrHash.svg?branch=master)
